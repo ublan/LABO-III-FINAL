@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import ar.edu.utn.frbb.tup.model.Cliente;
+import ar.edu.utn.frbb.tup.presentation.validaciones.Validaciones;
+
 public class ModificarCliente {
 
     private static final String NOMBRE_ARCHIVO = "C:\\Users\\Uriel\\Desktop\\LABO-III-FINAL\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Clientes.txt";
@@ -45,7 +48,7 @@ public class ModificarCliente {
                     System.out.println("Ingrese el número de la opción:");
 
                     int opcion = scanner.nextInt();
-                    scanner.nextLine(); // Consumir la nueva línea
+                    scanner.nextLine();
 
                     switch (opcion) {
                         case 1:
@@ -57,8 +60,8 @@ public class ModificarCliente {
                             campos[2] = scanner.nextLine();
                             break;
                         case 3:
-                            System.out.print("Ingrese el nuevo DNI: ");
-                            campos[3] = scanner.nextLine();
+                            long nuevoDni = Validaciones.ingresarDni(scanner);
+                            campos[3] = String.valueOf(nuevoDni);
                             break;
                         case 4:
                             System.out.print("Ingrese la nueva fecha de nacimiento - (Formato: YYYY-MM-DD): ");
@@ -103,7 +106,6 @@ public class ModificarCliente {
             System.out.println("No se encontraron clientes con el DNI: " + Dni);
         }
 
-        // Esperar a que el usuario presione Enter antes de volver al menú
         System.out.println("Presione Enter para volver al menú...");
         try {
             System.in.read();

@@ -27,15 +27,7 @@ public class ClienteInputProcessor extends BaseInputProcessor{
         String apellido = scanner.nextLine();
         cliente.setApellido(apellido);
 
-        System.out.println("Ingrese el DNI del cliente:"); // CAMBIOS MIOS ingresar dni
-        long dni = scanner.nextLong();
-        while (dni < 1000000 || dni > 85000000) {
-            scanner.nextLine();
-            System.out.println("DNI inválido. Ingrese un DNI entre 1000000 y 85000000:");
-            dni = scanner.nextLong();
-
-        }
-
+        long dni = Validaciones.ingresarDni(scanner);
         cliente.setDni(dni);
 
         System.out.println("Ingrese la fecha de nacimiento del cliente (Formato: YYYY-MM-DD):"); //CAMBIOS MIOS ingresar fecha nacimiento

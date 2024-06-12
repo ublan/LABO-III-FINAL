@@ -42,7 +42,6 @@ public class MostrarCliente {
             }
         }
 
-        // Esperar a que el usuario presione Enter antes de volver al menú
         System.out.println("Presione Enter para volver al menú...");
         try {
             System.in.read();
