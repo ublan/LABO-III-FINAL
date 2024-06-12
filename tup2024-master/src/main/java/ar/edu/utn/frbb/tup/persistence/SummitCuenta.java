@@ -12,8 +12,8 @@ import ar.edu.utn.frbb.tup.model.Cliente;
 import ar.edu.utn.frbb.tup.model.Cuenta;
 
 public class SummitCuenta {
-    private static final String NOMBRE_ARCHIVO = "C:\\Users\\joaqu\\Desktop\\Lab-lll\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Cuentas.txt";
-    private static final String NOMBRE_ARCHIVO1 = "C:\\Users\\joaqu\\Desktop\\Lab-lll\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Clientes.txt";
+    private static final String NOMBRE_ARCHIVO = "C:\\Users\\Uriel\\Desktop\\LABO-III-FINAL\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Cuentas.txt";
+    private static final String NOMBRE_ARCHIVO1 = "C:\\Users\\Uriel\\Desktop\\LABO-III-FINAL\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Clientes.txt";
 
     public static void escribirEnArchivo(Cuenta cuenta) {
         boolean archivoNuevo = !(new File(NOMBRE_ARCHIVO).exists());

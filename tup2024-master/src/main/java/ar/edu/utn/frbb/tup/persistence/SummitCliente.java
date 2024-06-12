@@ -13,7 +13,7 @@ import ar.edu.utn.frbb.tup.model.TipoPersona;
 
 public class SummitCliente {
 
-    private static final String NOMBRE_ARCHIVO = "C:\\Users\\joaqu\\Desktop\\Lab-lll\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Clientes.txt";
+    private static final String NOMBRE_ARCHIVO = "C:\\Users\\Uriel\\Desktop\\LABO-III-FINAL\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Clientes.txt";
 
     public static void escribirEnArchivo(Cliente cliente) {
         boolean archivoNuevo = !(new File(NOMBRE_ARCHIVO).exists());

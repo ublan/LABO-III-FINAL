@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ModificarCliente {
 
-    private static final String NOMBRE_ARCHIVO = "C:\\Users\\joaqu\\Desktop\\Lab-lll\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Clientes.txt";
+    private static final String NOMBRE_ARCHIVO = "C:\\Users\\Uriel\\Desktop\\LABO-III-FINAL\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Clientes.txt";
 
     public static void modificarCliente(String Dni) {
         List<String> clientes = new ArrayList<>();

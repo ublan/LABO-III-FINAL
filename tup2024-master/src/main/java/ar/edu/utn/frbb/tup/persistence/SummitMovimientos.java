@@ -9,8 +9,8 @@ import java.io.IOException;
 import ar.edu.utn.frbb.tup.service.operaciones.modulos.*;
 
 public class SummitMovimientos {
-    private static final String NOMBRE_ARCHIVO = "C:\\Users\\joaqu\\Desktop\\Lab-lll\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Cuentas.txt";
-    private static final String NOMBRE_ARCHIVO2 = "C:\\Users\\joaqu\\Desktop\\Lab-lll\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Movimientos.txt";
+    private static final String NOMBRE_ARCHIVO = "C:\\Users\\Uriel\\Desktop\\LABO-III-FINAL\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Cuentas.txt";
+    private static final String NOMBRE_ARCHIVO2 = "C:\\Users\\Uriel\\Desktop\\LABO-III-FINAL\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Movimientos.txt";
 
     public static void registrarMovimiento(String CBU, double monto, String tipoMovimiento) {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter(NOMBRE_ARCHIVO2, true))) {
