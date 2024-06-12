@@ -59,9 +59,9 @@ class ClienteServiceTest {
 
         Cliente mateoA = new Cliente();
         mateoA.setDni(26456439);
-        mateoA.setNombre("Mateo");
-        mateoA.setApellido("Abraham");
-        mateoA.setFechaNacimiento(LocalDate.of(2001, 12,18));
+        mateoA.setNombre("Juan");
+        mateoA.setApellido("Mateo");
+        mateoA.setFechaNacimiento(LocalDate.of(2003, 11,9));
         mateoA.setTipoPersona(TipoPersona.PERSONA_FISICA);
 
         assertThrows(ClienteAlreadyExistsException.class, () -> clienteService.darDeAltaCliente(mateoA));
@@ -82,12 +82,12 @@ class ClienteServiceTest {
                 .setNombre("UnaCuenta")
                 .setTipoCuenta(TipoCuenta.AHORRO);
 
-        /*
-         * clienteService.agregarCuenta(cuenta, pepeRino);
-         * 
-         * assertEquals(1, pepeRino.getCuentas().size());
-         * assertEquals(pepeRino, cuenta.getTitular());
-         */
+        
+        // clienteService.agregarCuenta(cuenta, pepeRino);
+         
+          assertEquals(1, pepeRino.getCuentas().size());
+          assertEquals(pepeRino, cuenta.getTitular());
+         
     }
 
     //Agregar una CA$ y agregar otra cuenta con mismo tipo y moneda --> fallar (assertThrows)
