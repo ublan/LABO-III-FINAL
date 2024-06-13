@@ -6,10 +6,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import ar.edu.utn.frbb.tup.model.Cliente;
 import ar.edu.utn.frbb.tup.model.Cuenta;
+import ar.edu.utn.frbb.tup.model.TipoCuenta;
 
 public class SummitCuenta {
     private static final String NOMBRE_ARCHIVO = "C:\\Users\\Uriel\\Desktop\\LABO-III-FINAL\\tup2024-master\\src\\main\\java\\ar\\edu\\utn\\frbb\\tup\\persistence\\DataBase\\Cuentas.txt";
@@ -40,6 +42,7 @@ public class SummitCuenta {
         }
     }
 
+
     public static Cliente buscarClientePorDni(long dni) {
         try (BufferedReader lector = new BufferedReader(new FileReader(NOMBRE_ARCHIVO1))) {
             String linea;
@@ -64,6 +67,35 @@ public class SummitCuenta {
             e.printStackTrace();
         }
         return null; // Si no se encuentra el cliente
+    }
+
+        public static Cuenta buscarCuentaPorDni(long dni) {
+        try (BufferedReader lector = new BufferedReader(new FileReader(NOMBRE_ARCHIVO))) {
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                String[] campos = linea.split(",");
+                if (campos.length > 0) {
+                    try {
+                        long titularDni = Long.parseLong(campos[6]);
+                        if (titularDni == dni) {
+                            Cuenta cuenta = new Cuenta();
+                            cuenta.setNombre(campos[1]);
+                            cuenta.setTipoCuenta(TipoCuenta.valueOf(campos[2]));
+                            cuenta.setBalance((int) Double.parseDouble(campos[3]));
+                            cuenta.setMoneda(campos[4]);
+                            cuenta.setFechaCreacion(LocalDateTime.parse(campos[5], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                            cuenta.setTitular(buscarClientePorDni(dni)); // Asignar el cliente encontrado
+                            return cuenta;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error al convertir algún campo: " + e.getMessage());
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null; // Si no se encuentra la cuenta
     }
 
 }

@@ -4,6 +4,7 @@ import ar.edu.utn.frbb.tup.model.Cliente;
 import ar.edu.utn.frbb.tup.model.Cuenta;
 import ar.edu.utn.frbb.tup.model.TipoCuenta;
 import ar.edu.utn.frbb.tup.persistence.SummitCuenta;
+import ar.edu.utn.frbb.tup.presentation.validaciones.Validaciones;
 import ar.edu.utn.frbb.tup.service.exception.CuentaAlreadyExistsException;
 import ar.edu.utn.frbb.tup.service.control.ClienteService;
 import ar.edu.utn.frbb.tup.service.control.CuentaService;
@@ -51,9 +52,7 @@ public class CuentaInputProcessor extends BaseInputProcessor {
 
         cuenta.setMoneda("ARS");
 
-        System.out.println("Ingrese el saldo inicial de la cuenta:");
-        int saldoInicial = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea
+        int saldoInicial = Validaciones.validarSaldoInicial(scanner);
         cuenta.setBalance(saldoInicial);
 
         cuenta.setFechaCreacion(LocalDateTime.now());
@@ -69,7 +68,6 @@ public class CuentaInputProcessor extends BaseInputProcessor {
         clearScreen();
     }
 }
-
 
 
 

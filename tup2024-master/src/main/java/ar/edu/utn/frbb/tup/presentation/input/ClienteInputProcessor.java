@@ -10,6 +10,7 @@ import java.time.LocalDate;
 //import java.util.Scanner;
 
 
+
 public class ClienteInputProcessor extends BaseInputProcessor{
 
     ClienteService clienteService = new ClienteService();
@@ -21,27 +22,28 @@ public class ClienteInputProcessor extends BaseInputProcessor{
         clearScreen();
         System.out.println("Ingrese el nombre del cliente:");
         String nombre = scanner.nextLine();
+        while (!Validaciones.esString(nombre)) {
+            System.out.println("Nombre inválido. Debe ingresar un nombre como texto:");
+            nombre = scanner.nextLine();
+        }
         cliente.setNombre(nombre);
 
         System.out.println("Ingrese el apellido del cliente:");
         String apellido = scanner.nextLine();
+        while (!Validaciones.esString(apellido)) {
+            System.out.println("Apellido inválido. Debe ingresar un apellido como texto:");
+            apellido = scanner.nextLine();
+        }
         cliente.setApellido(apellido);
 
         long dni = Validaciones.ingresarDni(scanner);
         cliente.setDni(dni);
+        cliente.setDni(dni);
 
-        System.out.println("Ingrese la fecha de nacimiento del cliente (Formato: YYYY-MM-DD):"); //CAMBIOS MIOS ingresar fecha nacimiento
-        LocalDate fechaNacimiento = null;
-        boolean isfechaValida = false;
-        while (!isfechaValida) {
-            try {
-                fechaNacimiento = LocalDate.parse(scanner.nextLine());
-                isfechaValida = true;
-            } catch (RuntimeException e) {
-                System.out.println("Formato de fecha inválido. Ingrese la fecha en formato YYYY-MM-DD:");
-            }
-        }
+        LocalDate fechaNacimiento = Validaciones
+                .obtenerFecha("Ingrese la fecha de nacimiento del cliente (Formato: YYYY-MM-DD):");
         cliente.setFechaNacimiento(fechaNacimiento);
+
 
         System.out.println("Ingrese el tipo de persona Física(F) o Jurídica(J):");
         String tipoPersonaStr = scanner.nextLine().toUpperCase();
@@ -56,18 +58,9 @@ public class ClienteInputProcessor extends BaseInputProcessor{
         String banco = scanner.nextLine();
         cliente.setBanco(banco);
 
-        System.out.println("Ingrese la fecha de alta del cliente (Formato: YYYY-MM-DD):");
-        LocalDate fechaAlta = null;
-        boolean fechaValida = false;
-        while (!fechaValida) {
-            try {
-                fechaAlta = LocalDate.parse(scanner.nextLine());
-                fechaValida = true;
-            } catch (RuntimeException e) {
-                System.out.println("Formato de fecha inválido. Ingrese la fecha en formato YYYY-MM-DD:");
-            }
-        }
+        LocalDate fechaAlta = Validaciones.obtenerFecha("Ingrese la fecha de alta del cliente (Formato: YYYY-MM-DD):");
         cliente.setFechaAlta(fechaAlta);
+
 
         try {
             clienteService.darDeAltaCliente(cliente);
